@@ -9,6 +9,7 @@ class call:
     def __init__(self):
         self.last = 0
     def print_sound(self,indata, outdata, frames, times, status):
+        print(self.last)
         volume_norm = np.linalg.norm(indata)*10
         if(int(volume_norm)>220 and (int(dt.now().strftime('%S'))-self.last)>1): 
             self.last = int(dt.now().strftime('%S'))
