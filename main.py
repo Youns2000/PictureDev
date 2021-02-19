@@ -14,7 +14,7 @@ class call:
 
     def print_sound(self,indata, outdata, frames, times, status):
         volume_norm = np.linalg.norm(indata)*10
-        if(int(volume_norm)>self.norm and (float(dt.now().strftime('%S.%f'))-float(self.last))>float(self.t)): 
+        if(int(volume_norm)>self.norm and ((float(dt.now().strftime('%S.%f'))-float(self.last))>float(self.t) or float(dt.now().strftime('%S.%f'))<float(self.last))): 
             self.last = int(dt.now().strftime('%S'))
             keyboard.press_and_release(self.key)
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
         elif(parties[0].lower()=="touche"):
             c.key = parties[1].replace('\n','')
         elif(parties[0].lower()=="temps"):
-            c.t = int(parties[1])
+            c.t = float(parties[1])
         else:
             pass
             
